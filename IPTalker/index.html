@@ -50,7 +50,7 @@
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
       <span aria-hidden="true"></span>
@@ -66,7 +66,7 @@
       </span>
       </a>
 
-      <!-- <div class="navbar-item has-dropdown is-hoverable">
+      <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           More Research
         </a>
@@ -83,12 +83,12 @@
           <a class="navbar-item" href="https://photoshape.github.io">
             PhotoShape
           </a>
-        </div> -->
+        </div>
       </div>
     </div>
 
   </div>
-</nav>
+</nav> -->
 
 
 <section class="hero">
@@ -200,7 +200,7 @@
         <source src="./figures/teaser2_compressed.jpg"
                 type="image/jpg">
       </video> -->
-      <img src="./figures/introductionv2.png"
+      <img src="./IPTalker/figures/introductionv2.png"
       />
       <h2 class="subtitle has-text-centered">
         IPTalker generates dubbed videos using a few reference images to provide identity-specific priors and driving audio to dictate mouth shape.
@@ -219,19 +219,19 @@
                 <h2 class="title is-3">Qualitative Comparison</h2>
             </div>
             <video id="teaser1" autoplay="" muted="" loop="" playsinline="" height="100%">
-              <source src="./video/RD_Radio5_000_text.mp4" type="video/mp4">
+              <source src="./IPTalker/videos/test/RD_Radio5_000_text.mp4" type="video/mp4">
             </video>
             <video id="teaser2" autoplay="" muted="" loop="" playsinline="" height="100%">
-              <source src="./video/RD_Radio27_000.mp4" type="video/mp4">
+              <source src="./IPTalker/videos/test/RD_Radio27_000.mp4" type="video/mp4">
             </video>
             <video id="teaser3" autoplay="" muted="" loop="" playsinline="" height="100%">
-              <source src="./video/WDA_RobinKelly_000.mp4" type="video/mp4">
+              <source src="./IPTalker/videos/test/WDA_RobinKelly_000.mp4" type="video/mp4">
             </video>
             <video id="teaser4" autoplay="" muted="" loop="" playsinline="" height="100%">
-              <source src="./video/WRA_CathyMcMorrisRodgers1_000.mp4" type="video/mp4">
+              <source src="./IPTalker/videos/test/WRA_CathyMcMorrisRodgers1_000.mp4" type="video/mp4">
             </video>
             <video id="teaser5" autoplay="" muted="" loop="" playsinline="" height="100%">
-              <source src="./video/WRA_KevinBrady_000.mp4" type="video/mp4">
+              <source src="./IPTalker/videos/test/WRA_KevinBrady_000.mp4" type="video/mp4">
             </video>
            
           <div id="clear" style="clear:both"></div>
@@ -291,10 +291,10 @@
             </div>
 
             <div style="text-align: center;">
-                <img src="figures/framework.png" class="body" alt="Interpolate start reference image. " width="100%">
+                <img src="./IPTalker/figures/framework.png" class="body" alt="Interpolate start reference image. " width="100%">
             </div>
             <p>
-                The illustration of our framework. Our framework feed a reference set into reference Unet to extract the reference feature. To filter out the redundant information in reference features set, we propose a pose correlation guider to create a correlation map to indicate the informative region of the reference spatially. Moreover, we adopt a reference selection strategy to pick up the informative tokens from the reference feature set according to the correlation map and pass them to the following modules.
+              The framework of our method consists of three components: (a) Alignment Module, where reference mouth images and driving audio are input into encoders to extract embeddings. The Audio-Visual Alignment Unit (AVAU) captures the relationships among all embeddings to obtain an identity-audio correspondence embedding. (b) Warping Module, which uses the reference image and the identity-audio correspondence embedding to generate a motion flow that deforms the reference image to match the target configuration dictated by the audio. (c) Inpainting Module, which inpaints the masked source image to produce the final generated image.
             </p>
           </div>
         </div>
@@ -312,32 +312,40 @@
             <div style="text-align: center;">
                 <h2 class="title is-3">Results</h2>
             </div>
-            <h3 class="title is-5">Multiple reference images and target video share the different viewpoints.
+            <h3 class="title is-5">Comparisons with DINet on some videos from internet.
             </h3>
             <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
-              <source src="videos/mref/multi_ref4.mp4" type="video/mp4">
+              <source src="./IPTalker/videos/net/rh2_test.mp4" type="video/mp4">
             </video>
             
             <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
-              <source src="videos/mref/multi_ref5.mp4" type="video/mp4">
-            </video>
-            <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
-              <source src="videos/mref/multi_ref2.mp4" type="video/mp4">
+              <source src="./IPTalker/videos/net/rh14.mp4" type="video/mp4">
             </video>
 
             <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
-              <source src="videos/mref/multi_ref3.mp4" type="video/mp4">
+              <source src="./IPTalker/videos/net/rh1.mp4" type="video/mp4">
             </video>
 
+            <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
+              <source src="./IPTalker/videos/net/rh4.mp4" type="video/mp4">
+            </video>
 
-            <h3 class="title is-5">Difference viewpoints provide more diverse information</h3>
             <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
-              <source src="videos/diffref/diffref1.mp4" type="video/mp4">
+              <source src="./IPTalker/videos/net/rh9.mp4" type="video/mp4">
             </video>
-              
+
             <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
-              <source src="videos/diffref/diffref2.mp4" type="video/mp4">
+              <source src="./IPTalker/videos/net/rh12.mp4" type="video/mp4">
             </video>
+
+            <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
+              <source src="./IPTalker/videos/net/rh3.mp4" type="video/mp4">
+            </video>
+
+            <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
+              <source src="./IPTalker/videos/net/rh5.mp4" type="video/mp4">
+            </video>
+
           <div id="clear" style="clear:both"></div>
 
 
@@ -352,12 +360,12 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{hong2024fvhuman,
-  author    = {Hong, Fa-Ting and Xu, Zhan and Liu, Haiyang and Lin, Qinjie and Song, Luchuan and Shu, Zhixin and Zhou, Yang and Ceylan, Duygu and Xu, Dan},
-  title     = {Free-viewpoint Human Animation with Pose-correlated Reference Selection},
-  journal   = {arXiv},
-  year      = {2024},
-}</code></pre>
+    <pre><code>@article{liu2025identity,
+      title={Identity-Preserving Video Dubbing Using Motion Warping},
+      author={Liu, Runzhen and Lin, Qinjie and Liu, Yunfei and Lin, Lijian and Zhu, Ye and Li, Yu and Xian, Chuhua and Hong, Fa-Ting},
+      journal={arXiv preprint arXiv:2501.04586},
+      year={2025}
+    }</code></pre>
   </div>
 </section>
 
