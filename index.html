@@ -252,10 +252,13 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Diffusion-based human animation aims to animate a human character based on a source human image as well as driving signals such as a sequence of poses. Leveraging the generative capacity of diffusion model, existing approaches are able to generate high-fidelity poses, but struggle with significant viewpoint changes, especially in zoom-in/zoom-out scenarios where camera-character distance varies. This limits the applications such as cinematic shot type plan or camera control. We propose a pose-correlated reference selection diffusion network, supporting substantial viewpoint variations in human animation. Our key idea is to enable the network to utilize multiple reference images as input, since significant viewpoint changes often lead to missing appearance details on the human body. To eliminate the computational cost, we first introduce a novel pose correlation module to compute similarities between non-aligned target and source poses, and then propose an adaptive reference selection strategy, utilizing the attention map to identify key regions for animation generation. 
+            Video dubbing aims to synthesize realistic, lip-synced videos from a reference video and a driving audio signal. Although existing methods can accurately generate mouth shapes driven by audio, they often fail to preserve identity-specific features, largely because they do not effectively capture the nuanced interplay between audio cues and the reference identity's visual attributes. As a result, the generated outputs frequently lack fidelity in reproducing the unique textural and structural details of the reference identity.
           </p>
           <p>
-            To train our model, we curated a large dataset from public TED talks featuring varied shots of the same character, helping the model learn synthesis for different perspectives. Our experimental results show that with the same number of reference images, our model performs favorably compared to the current SOTA methods under large viewpoint change. We further show that the adaptive reference selection is able to choose the most relevant reference regions to generate humans under free viewpoints.
+            To address these limitations, we propose IPTalker, a novel and robust framework for video dubbing that achieves seamless alignment between driving audio and reference identity while ensuring both lip-sync accuracy and high-fidelity identity preservation. At the core of IPTalker is a transformer-based alignment mechanism designed to dynamically capture and model the correspondence between audio features and reference images, thereby enabling precise, identity-aware audio-visual integration.
+          </p>
+          <p>
+            Building on this alignment, a motion warping strategy further refines the results by spatially deforming reference images to match the target audio-driven configuration. A dedicated refinement process then mitigates occlusion artifacts and enhances the preservation of fine-grained textures, such as mouth details and skin features. Extensive qualitative and quantitative evaluations demonstrate that IPTalker consistently outperforms existing approaches in terms of realism, lip synchronization, and identity retention, establishing a new state of the art for high-quality, identity-consistent video dubbing.
           </p>
         </div>
       </div>
@@ -288,7 +291,7 @@
             </div>
 
             <div style="text-align: center;">
-                <img src="figures/framework.jpg" class="body" alt="Interpolate start reference image. " width="100%">
+                <img src="figures/framework.png" class="body" alt="Interpolate start reference image. " width="100%">
             </div>
             <p>
                 The illustration of our framework. Our framework feed a reference set into reference Unet to extract the reference feature. To filter out the redundant information in reference features set, we propose a pose correlation guider to create a correlation map to indicate the informative region of the reference spatially. Moreover, we adopt a reference selection strategy to pick up the informative tokens from the reference feature set according to the correlation map and pass them to the following modules.
@@ -299,35 +302,6 @@
     </div>
 </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <div class="content has-text-justified">
-            <!-- Results. -->
-            <div style="text-align: center;">
-                <h2 class="title is-3">Dataset</h2>
-            </div>
-            <h3 class="title is-5">The collected multiple-shot TED (MSTed) dataset.
-            </h3>
-            <p>
-              To address this limitation and advance research in this area, we introduce a novel multi-shot TED video dataset (MSTed), designed to capture significant variations in viewpoints and camera distances. TED videos were chosen for their diverse real-world settings, professional quality, rich variations in human presentations, and broad public availability, making them an ideal foundation for a comprehensive and realistic multi-shot video dataset. MSTed dataset comprises 1,084 unique identities and 15,260 video clips, totaling approximately 30 hours of content.
-            </p>
-            <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
-              <source src="videos/dataset.mp4" type="video/mp4">
-            </video>
-       
-           
-          <div id="clear" style="clear:both"></div>
-
-
-            
-
-          </div>
-        </div>
-      </div>
-    </div>
-</section>
 
 <section class="section">
   <div class="container is-max-desktop">
