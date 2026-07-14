@@ -1,0 +1,476 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Identity-Preserving Video Dubbing Using Motion Warping">
+  <meta name="keywords" content="Video dubbing, Motion Warping, Identity-Preservation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Identity-Preserving Video Dubbing Using Motion Warping</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <style>
+    button:hover{
+        cursor: pointer;
+    }
+  </style>
+
+
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://harlanhong.github.io">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Identity-Preserving Video Dubbing Using Motion Warping</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://github.com/alunaticat">Runzhen Liu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://qinjielin-nu.github.io">Qinjie Lin</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+                <a href="https://github.com/Yunfei-Liu">Yunfei Liu</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+                <a href="">Lijian Lin</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+                <a href="">Ye Zhu</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+                <a href="">Yu Li</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+                <a href="">Chuhua Xian</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+                <a href="https://harlanhong.github.io">Fa-Ting Hong</a><sup>4</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>SCUT,</span>
+            <span class="author-block"><sup>2</sup>Vistring Lab, IDEA,</span>
+            <span class="author-block"><sup>3</sup>Northwestern University, USA,</span>
+            <span class="author-block"><sup>4</sup>HKUST</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2501.04586"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/alunaticat/IPTalker"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./figures/teaser2_compressed.jpg"
+                type="image/jpg">
+      </video> -->
+      <img src="figures/introductionv2.png"
+      />
+      <h2 class="subtitle has-text-centered">
+        IPTalker generates dubbed videos using a few reference images to provide identity-specific priors and driving audio to dictate mouth shape.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+            <div style="text-align: center;">
+                <h2 class="title is-3">Generated Results</h2>
+            </div>
+            <video id="teaser" playsinline="" height="100%" controls>
+              <source src="videos/larger_frame/video1.mp4" type="video/mp4">
+            </video>
+            <video id="teaser" playsinline="" height="100%" controls>
+              <source src="videos/larger_frame/video2.mp4" type="video/mp4">
+            </video>
+            <video id="teaser" playsinline="" height="100%" controls>
+              <source src="videos/larger_frame/video3.mp4" type="video/mp4">
+            </video>
+            <video id="teaser" playsinline="" height="100%" controls>
+              <source src="videos/larger_frame/video4.mp4" type="video/mp4">
+            </video>
+            <video id="teaser" playsinline="" height="100%" controls>
+              <source src="videos/larger_frame/video5.mp4" type="video/mp4">
+            </video>
+            <video id="teaser" playsinline="" height="100%" controls>
+              <source src="videos/larger_frame/video6.mp4" type="video/mp4">
+            </video>
+            <video id="teaser" playsinline="" height="100%" controls>
+              <source src="videos/larger_frame/video7.mp4" type="video/mp4">
+            </video>
+            
+          <div id="clear" style="clear:both"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Video dubbing aims to synthesize realistic, lip-synced videos from a reference video and a driving audio signal. Although existing methods can accurately generate mouth shapes driven by audio, they often fail to preserve identity-specific features, largely because they do not effectively capture the nuanced interplay between audio cues and the reference identity's visual attributes. As a result, the generated outputs frequently lack fidelity in reproducing the unique textural and structural details of the reference identity.
+          </p>
+          <p>
+            To address these limitations, we propose IPTalker, a novel and robust framework for video dubbing that achieves seamless alignment between driving audio and reference identity while ensuring both lip-sync accuracy and high-fidelity identity preservation. At the core of IPTalker is a transformer-based alignment mechanism designed to dynamically capture and model the correspondence between audio features and reference images, thereby enabling precise, identity-aware audio-visual integration.
+          </p>
+          <p>
+            Building on this alignment, a motion warping strategy further refines the results by spatially deforming reference images to match the target audio-driven configuration. A dedicated refinement process then mitigates occlusion artifacts and enhances the preservation of fine-grained textures, such as mouth details and skin features. Extensive qualitative and quantitative evaluations demonstrate that IPTalker consistently outperforms existing approaches in terms of realism, lip synchronization, and identity retention, establishing a new state of the art for high-quality, identity-consistent video dubbing.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+
+            <!-- Method. -->
+            <div style="text-align: center;">
+                <h2 class="title is-3">Method</h2>
+            </div>
+
+            <div style="text-align: center;">
+                <img src="figures/framework.png" class="body" alt="Interpolate start reference image. " width="100%">
+            </div>
+            <p>
+              The framework of our method consists of three components: (a) Alignment Module, where reference mouth images and driving audio are input into encoders to extract embeddings. The Audio-Visual Alignment Unit (AVAU) captures the relationships among all embeddings to obtain an identity-audio correspondence embedding. (b) Warping Module, which uses the reference image and the identity-audio correspondence embedding to generate a motion flow that deforms the reference image to match the target configuration dictated by the audio. (c) Inpainting Module, which inpaints the masked source image to produce the final generated image.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+            <!-- Results. -->
+            <div style="text-align: center;">
+                <h2 class="title is-3">Qualitative Comparison</h2>
+            </div>
+            <video id="teaser1" playsinline="" height="100%" controls>
+              <source src="videos/test/RD_Radio5_000_text.mp4" type="video/mp4">
+            </video>
+            <video id="teaser2" playsinline="" height="100%" controls>
+              <source src="videos/test/RD_Radio27_000.mp4" type="video/mp4">
+            </video>
+            <video id="teaser3" playsinline="" height="100%" controls>
+              <source src="videos/test/WDA_RobinKelly_000.mp4" type="video/mp4">
+            </video>
+            <video id="teaser4" playsinline="" height="100%" controls>
+              <source src="videos/test/WRA_CathyMcMorrisRodgers1_000.mp4" type="video/mp4">
+            </video>
+            <video id="teaser5" playsinline="" height="100%" controls>
+              <source src="videos/test/WRA_KevinBrady_000.mp4" type="video/mp4">
+            </video>
+           
+          <div id="clear" style="clear:both"></div>
+
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+            <!-- Results. -->
+            <div style="text-align: center;">
+                <h2 class="title is-3">Results</h2>
+            </div>
+            <h3 class="title is-5">Comparisons with DINet on some videos from internet.
+            </h3>
+            <video id="teaser" playsinline="" height="100%" controls>
+              <source src="videos/net/rh2_text.mp4" type="video/mp4">
+            </video>
+            
+            <video id="teaser" playsinline="" height="100%" controls>
+              <source src="videos/net/rh14.mp4" type="video/mp4">
+            </video>
+
+            <video id="teaser" playsinline="" height="100%" controls>
+              <source src="videos/net/rh1.mp4" type="video/mp4">
+            </video>
+
+            <video id="teaser" playsinline="" height="100%" controls>
+              <source src="videos/net/rh4.mp4" type="video/mp4">
+            </video>
+
+            <video id="teaser" playsinline="" height="100%" controls>
+              <source src="videos/net/rh9.mp4" type="video/mp4">
+            </video>
+
+            <video id="teaser" playsinline="" height="100%" controls>
+              <source src="videos/net/rh12.mp4" type="video/mp4">
+            </video>
+
+            <video id="teaser" playsinline="" height="100%" controls>
+              <source src="videos/net/rh3.mp4" type="video/mp4">
+            </video>
+
+            <video id="teaser" playsinline="" height="100%" controls>
+              <source src="videos/net/rh5.mp4" type="video/mp4">
+            </video>
+
+          <div id="clear" style="clear:both"></div>
+
+
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+            <div style="text-align: center;">
+                <h2 class="title is-3">Illumination changes</h2>
+            </div>
+
+            <div class="video-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                <video id="teaser4" playsinline="" width="100%" controls>
+                  <source src="videos/illumination/video1.mp4" type="video/mp4">
+                </video>
+                <video id="teaser5" playsinline="" width="100%" controls>
+                  <source src="videos/illumination/video2.mp4" type="video/mp4">
+                </video>
+                <video id="teaser6" playsinline="" width="100%" controls>
+                  <source src="videos/illumination/video3.mp4" type="video/mp4">
+                </video>
+            </div>
+            
+          <div id="clear" style="clear:both"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{liu2025identity,
+      title={Identity-Preserving Video Dubbing Using Motion Warping},
+      author={Liu, Runzhen and Lin, Qinjie and Liu, Yunfei and Lin, Lijian and Zhu, Ye and Li, Yu and Xian, Chuhua and Hong, Fa-Ting},
+      journal={arXiv preprint arXiv:2501.04586},
+      year={2025}
+    }</code></pre>
+  </div>
+</section>
+
+
+<!-- <footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2412.17290">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/harlanhong/FVHuman" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer> -->
+
+
+                  
+</body>
+</html>
