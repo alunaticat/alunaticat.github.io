@@ -43,7 +43,9 @@
   <style>
     button:hover{cursor:pointer}
     /* 修改这里的数值即可控制所有视频宽度: 512px / 768px / 100% 等 */
-    video{max-width:1024px;width:100%;display:block;margin:0 auto}
+    .container.is-max-desktop { max-width: 2000px !important }
+    video,iframe.vid{max-width:2000px;width:100%;display:block;margin:0 auto}
+    iframe.vid{height:800px}
     img.teaser{max-width:300px;width:100%;display:block;margin:0 auto}
   </style>
 
@@ -98,6 +100,29 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         <div class="content has-text-justified">
+            <div style="text-align: center;">
+                <h2 class="title is-3">Real-time performance on consumer-grade GPUs.</h2>
+            </div>
+            <div style="text-align:center"><iframe class="vid"
+                src="https://drive.google.com/file/d/1c-tHxTiwBUNrPzzWTW-wMVNZKpZSKwVg/preview"
+                allow="autoplay" allowfullscreen>
+            </iframe></div>
+
+          <div id="clear" style="clear:both"></div>
+
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
             <!-- Results. -->
             <div style="text-align: center;">
                 <h2 class="title is-3">Qualitative Comparison</h2>
@@ -117,14 +142,11 @@
             <div style="text-align:center"><video id="teaser5" playsinline="" controls>
               <source src="vc_5.mp4" type="video/mp4">
             </video></div>
-            <div style="text-align:center"><video id="teaser5" playsinline="" controls>
+            <div style="text-align:center"><video id="teaser6" playsinline="" controls>
               <source src="vc_6.mp4" type="video/mp4">
             </video></div>
-            <div style="text-align:center"><video id="teaser5" playsinline="" controls>
+            <div style="text-align:center"><video id="teaser7" playsinline="" controls>
               <source src="vc_7.mp4" type="video/mp4">
-            </video></div>
-            <div style="text-align:center"><video id="teaser5" playsinline="" controls>
-              <source src="vc_8.mp4" type="video/mp4">
             </video></div>
            
           <div id="clear" style="clear:both"></div>
